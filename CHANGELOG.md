@@ -24,3 +24,11 @@ All notable project changes are recorded here.
 ### Changed
 
 - Recorded the actual Phase 2 held-out evaluation of the provisional secondary dataset and its limitations.
+
+## 2026-11-03
+
+### Added
+
+- Local FastAPI health, model-information, and single-prediction endpoints that reuse the saved inference artifacts.
+- React/Vite/Tailwind review dashboard with manual input, result display, actual Phase 2 metrics, and confusion matrix.
+- API coverage for health, metadata, prediction, and validation failures.

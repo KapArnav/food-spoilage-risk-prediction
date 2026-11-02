@@ -10,7 +10,7 @@ The project proposes a neural-network-based framework that analyzes food or frui
 
 ## Current scope
 
-This repository currently contains **Phases 0 through 2**: project inspection, durable documentation, dataset-source validation, and a local TensorFlow/Keras binary baseline. No backend, frontend, synthetic data, or Supabase integration has been implemented.
+This repository currently contains **Phases 0 through 3**: project inspection, durable documentation, dataset-source validation, a local TensorFlow/Keras binary baseline, FastAPI inference API, and React review dashboard. No Supabase integration or advanced analytics has been implemented.
 
 The intended review prototype will later include a React frontend, FastAPI backend, TensorFlow/Keras MLP, manual and CSV prediction flows, recommendation policy, optional Supabase prediction history, analytics, and model-insight views.
 
@@ -49,15 +49,16 @@ The run used stratified 64%/16%/20% train/validation/test splits after deduplica
 - 2026-11-02: Renamed the initial branch to `main` and created the local root commit `chore: initialize project structure`.
 - 2026-11-02: Verified the original Mendeley dataset record, inspected a temporary secondary CSV copy, and recorded its schema, quality findings, and scope limitations.
 - 2026-11-02: Trained and tested the initial local binary MLP using the provisional secondary copy. Saved artifacts locally under `models/provisional_mlp/`.
+- 2026-11-03: Added and tested a local FastAPI inference API and React/Vite review dashboard that reuse the saved Phase 2 artifacts.
 
 ## Known issues
 
 - Original dataset-file retrieval and checksum verification remain unresolved because Mendeley's current public API required authentication.
 - The local training file remains a secondary copy, not the verified original Mendeley file.
 - Test performance may be optimistic because the source has extensive duplicates and the secondary-file provenance is provisional.
-- No API, UI, Supabase project, or longitudinal forecasting dataset exists.
+- The review demo is local-only, with no Supabase project, authentication, batch prediction, or longitudinal forecasting dataset.
 - No remote repository is configured or has been contacted.
 
 ## Next step
 
-Await approval to begin Phase 3: implement a minimal FastAPI inference API around the saved local artifacts.
+Review-demo milestone complete. Any next work must be explicitly approved and should preserve the existing inference contract.

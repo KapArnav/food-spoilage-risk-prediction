@@ -10,9 +10,9 @@ flowchart TD
     neural --> probability[Model probability]
     probability --> risk[Policy-derived risk classification]
     risk --> decision[Decision support]
-    neural --> backend[FastAPI backend: pending]
+    neural --> backend[FastAPI inference API]
     decision --> backend
-    backend --> frontend[React frontend]
+    backend --> frontend[React review dashboard]
     backend --> supabase[Optional Supabase history]
     backend --> testing[API and integration testing]
     frontend --> testing
