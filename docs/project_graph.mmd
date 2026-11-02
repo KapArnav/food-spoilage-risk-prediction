@@ -1,7 +1,7 @@
 flowchart TD
     objectives[Research objectives] --> literature[Literature review]
     literature --> gaps[Identified research gaps]
-    gaps --> dataset[Verified public dataset: pending]
+    gaps --> dataset[Verified Mendeley source]
     dataset --> preprocessing[Leakage-safe preprocessing]
     preprocessing --> features[Feature engineering]
     features --> neural[Neural network]
@@ -17,3 +17,5 @@ flowchart TD
     backend --> testing[API and integration testing]
     frontend --> testing
     testing --> deployment[Local review demonstration]
+    dataset -.->|binary Good/Bad; no timestamps| probability
+    dataset -.->|deduplicate before split| preprocessing

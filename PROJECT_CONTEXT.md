@@ -10,7 +10,7 @@ The project proposes a neural-network-based framework that analyzes food or frui
 
 ## Current scope
 
-This repository currently contains **Phase 0 only**: project inspection, durable documentation, safe Git setup, and initial architecture planning. No dataset has been downloaded, no model has been trained, and no application code has been implemented.
+This repository currently contains **Phases 0 and 1**: project inspection, durable documentation, safe Git setup, and dataset-source validation. No training, application code, synthetic data, or Supabase integration has been implemented.
 
 The intended review prototype will later include a React frontend, FastAPI backend, TensorFlow/Keras MLP, manual and CSV prediction flows, recommendation policy, optional Supabase prediction history, analytics, and model-insight views.
 
@@ -25,7 +25,7 @@ These are approved proposal-stack decisions. Dependency installation and project
 
 ## Dataset status
 
-The review deck names a 2025 Mendeley Data resource, "Multi-Parameter Fruit Spoilage Prediction Dataset", and states 10,996 records with fruit type, temperature, humidity, light intensity, CO2 concentration, and a Good/Bad target. These statements remain **unverified**. The project must locate and inspect the source before implementing preprocessing, labels, or training.
+The original Mendeley Data record is verified: Nshekanabo Marius and Stanley Mugisha, 2025, DOI `10.17632/czz68d9fwj.1`, CC BY 4.0. The record describes 10,996 entries, six fields, four example fruit types, environmental inputs, and a binary `Good`/`Bad` target. Original-file download was unavailable without authentication during Phase 1. A temporary secondary copy was inspected provisionally: it has 10,995 rows, 2,880 exact duplicates, and inconsistent `BAD`/`Bad` spelling. See `docs/dataset_documentation.md` and `docs/dataset_validation.md`.
 
 ## Neural-network status
 
@@ -33,8 +33,8 @@ The proposed architecture is an MLP with Dense 64 ReLU, Dense 32 ReLU, Dropout, 
 
 ## Research decisions and open questions
 
-1. A binary Good/Bad target cannot directly train the Low/Medium/High or Critical risk classes shown in the deck. If the dataset is binary, the model will predict a binary probability and a separately documented decision-policy threshold will map it to risk bands.
-2. The proposal refers to future deterioration and risk escalation, but the named dataset description appears cross-sectional. Temporal prediction needs verified time-indexed labels and an appropriate split strategy.
+1. A binary Good/Bad target cannot directly train the Low/Medium/High or Critical risk classes shown in the deck. The initial model must predict the binary `Bad` label; risk bands, if displayed, are separately documented decision-policy thresholds.
+2. The proposed dataset has no documented timestamp, storage-duration, sequence, or future-outcome fields. It does not scientifically support future-spoilage or risk-escalation forecasting.
 3. The literature slide includes incomplete bibliographic details, including "IEEE, 2026". Literature citations need verification before they are treated as evidence.
 4. Storage duration is central to the abstract and diagrams but is not included in the dataset input-feature list on the dataset slide. Dataset inspection must resolve this.
 5. The deck names High-risk recall, multi-class F1, and ROC-AUC together. Final evaluation must match the verified target and risk-policy design.
@@ -45,13 +45,14 @@ The proposed architecture is an MLP with Dense 64 ReLU, Dense 32 ReLU, Dropout, 
 - 2026-11-02: Confirmed Git is installed and the working directory is an empty existing repository on branch `master` with no commits.
 - 2026-11-02: Created the persistent documentation, decision records, project graph, history graph, environment template, and ignore policy.
 - 2026-11-02: Renamed the initial branch to `main` and created the local root commit `chore: initialize project structure`.
+- 2026-11-02: Verified the original Mendeley dataset record, inspected a temporary secondary CSV copy, and recorded its schema, quality findings, and scope limitations.
 
 ## Known issues
 
-- Public dataset source and schema are not yet verified.
+- Original dataset-file retrieval and checksum verification remain unresolved because Mendeley's current public API required authentication.
 - No baseline dataset, trained model, metrics, API, UI, Supabase project, or test suite exists.
 - No remote repository is configured or has been contacted.
 
 ## Next step
 
-Await approval to begin Phase 1: locate and inspect the public dataset, then document the verified schema and label semantics before any training implementation.
+Await approval to begin Phase 2: acquire or explicitly accept a dataset file, implement leakage-safe preprocessing, and train an initial binary MLP baseline.
