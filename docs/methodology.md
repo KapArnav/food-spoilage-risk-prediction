@@ -1,13 +1,13 @@
 # Methodology
 
-## Planned, pending dataset verification
+## Implemented Phase 2 baseline
 
-1. Inspect and document the public dataset.
-2. Define a leakage-safe train, validation, and test split.
-3. Fit missing-value handling, encoding, scaling, and feature engineering only on training data.
-4. Train a Keras MLP appropriate for the verified label structure.
-5. Evaluate only with metrics supported by the labels.
-6. Save model and preprocessing artifacts together for inference.
-7. Apply a separate, documented policy to generate risk bands and recommendations.
+1. Load the provisional secondary CSV through a configurable CLI path.
+2. Normalize `Good`, `Bad`, and `BAD` labels to a binary target where `Bad` is 1.
+3. Remove exact duplicate rows before stratified 64%/16%/20% train, validation, and test splitting.
+4. Fit one-hot fruit encoding and numeric scaling on training features only.
+5. Train Dense(32, ReLU) → Dropout(0.20) → Dense(16, ReLU) → Dense(1, sigmoid).
+6. Evaluate the held-out test set with accuracy, precision, recall, F1, confusion matrix, and ROC-AUC.
+7. Save the paired Keras model, fitted preprocessing pipeline, and metadata together for CLI inference.
 
-The deck's future-escalation language will remain a research goal unless the data supports temporal forecasting.
+The model predicts the dataset's Good/Bad storage-condition label only. The deck's future-escalation language remains a research goal unless a longitudinal dataset supports it.

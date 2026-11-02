@@ -4,7 +4,7 @@ Review prototype for a B.Tech CSE AIML project: **Development of Neural Network 
 
 ## Status
 
-Phase 0 is complete. The repository contains project governance and research documentation only. It does not yet contain a dataset, trained model, backend, frontend, or verified performance results.
+Phase 2 is complete. The repository contains a local TensorFlow/Keras baseline and command-line prediction pipeline trained on a provisional secondary dataset copy. It does not contain a backend, frontend, Supabase integration, or a future-spoilage forecasting model.
 
 ## Planned prototype
 
@@ -24,4 +24,14 @@ Read [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) for the current persistent project
 
 ## Next approved phase
 
-Phase 1 will locate and inspect the public dataset before any preprocessing or model training begins.
+The current model predicts the dataset's binary Good/Bad storage-condition label only. See [dataset documentation](docs/dataset_documentation.md) and [evaluation results](docs/experiments/evaluation_results.md) before using it in a review demonstration.
+
+## Local Phase 2 commands
+
+The local CSV and model artifacts are intentionally ignored by Git. Set a dataset path explicitly.
+
+```powershell
+.\.venv\Scripts\python.exe -m ml.train --dataset data\raw\fruit_spoilage_secondary.csv --artifacts-dir models\provisional_mlp
+.\.venv\Scripts\python.exe -m ml.predict --artifacts-dir models\provisional_mlp --fruit Orange --temp 22 --humidity 95 --light 7.36 --co2 361
+.\.venv\Scripts\python.exe -m pytest -q
+```

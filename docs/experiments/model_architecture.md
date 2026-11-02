@@ -1,7 +1,13 @@
 # Model Architecture
 
-## Status: proposed
+## Status: implemented baseline
 
-The deck diagram proposes a tabular MLP with 64 and 32 ReLU dense layers, dropout, a 16-neuron ReLU layer, and an output layer. This is not an implemented or trained architecture.
+The Phase 2 model is a tabular binary MLP:
 
-The final output layer and loss will be chosen after the verified dataset establishes whether the task is binary or multiclass.
+1. Eight preprocessed inputs: four standardized numeric features and four one-hot fruit indicators.
+2. Dense layer with 32 ReLU units.
+3. Dropout with rate 0.20.
+4. Dense layer with 16 ReLU units.
+5. One sigmoid output for `P(Bad storage-condition label)`.
+
+It uses Adam (learning rate 0.001), binary cross-entropy, batch size 32, and up to 50 epochs with validation-loss early stopping. This differs from the deck's softmax diagram because the verified target is binary.

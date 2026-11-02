@@ -22,10 +22,7 @@ coverage/
 # Model artifacts and local data
 data/raw/
 data/processed/
-models/*.keras
-models/*.h5
-models/*.joblib
-models/*.pkl
+models/
 
 # Editor and operating-system files
 .DS_Store

@@ -14,3 +14,13 @@ All notable project changes are recorded here.
 ### Changed
 
 - Documented the verified Mendeley source, binary target semantics, provisional secondary-file profile, duplicate risk, and the lack of temporal forecasting support.
+
+## 2026-11-02
+
+### Added
+
+- Configurable TensorFlow/Keras training, saved-artifact inference CLI, preprocessing tests, and project-local pytest configuration.
+
+### Changed
+
+- Recorded the actual Phase 2 held-out evaluation of the provisional secondary dataset and its limitations.

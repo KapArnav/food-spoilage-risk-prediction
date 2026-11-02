@@ -10,7 +10,7 @@ The project proposes a neural-network-based framework that analyzes food or frui
 
 ## Current scope
 
-This repository currently contains **Phases 0 and 1**: project inspection, durable documentation, safe Git setup, and dataset-source validation. No training, application code, synthetic data, or Supabase integration has been implemented.
+This repository currently contains **Phases 0 through 2**: project inspection, durable documentation, dataset-source validation, and a local TensorFlow/Keras binary baseline. No backend, frontend, synthetic data, or Supabase integration has been implemented.
 
 The intended review prototype will later include a React frontend, FastAPI backend, TensorFlow/Keras MLP, manual and CSV prediction flows, recommendation policy, optional Supabase prediction history, analytics, and model-insight views.
 
@@ -29,7 +29,9 @@ The original Mendeley Data record is verified: Nshekanabo Marius and Stanley Mug
 
 ## Neural-network status
 
-The proposed architecture is an MLP with Dense 64 ReLU, Dense 32 ReLU, Dropout, Dense 16 ReLU, and a softmax output in the methodology diagram. The master brief separately proposes a 64/32/Dropout initial candidate. Architecture, output activation, loss, and metrics remain pending verified target semantics.
+Phase 2 trained a TensorFlow/Keras MLP on the provisional secondary copy after exact-row deduplication. The model uses four scaled numeric inputs and one-hot fruit type, producing eight features. Architecture: Dense(32, ReLU) → Dropout(0.20) → Dense(16, ReLU) → Dense(1, sigmoid). It predicts the binary `Bad` storage-condition label, not future spoilage, food safety, or food freshness.
+
+The run used stratified 64%/16%/20% train/validation/test splits after deduplication: 5,193/1,299/1,623 rows. Held-out metrics are documented in `docs/experiments/evaluation_results.md`; they must remain qualified by the provisional source and duplicate-heavy data.
 
 ## Research decisions and open questions
 
@@ -46,13 +48,16 @@ The proposed architecture is an MLP with Dense 64 ReLU, Dense 32 ReLU, Dropout, 
 - 2026-11-02: Created the persistent documentation, decision records, project graph, history graph, environment template, and ignore policy.
 - 2026-11-02: Renamed the initial branch to `main` and created the local root commit `chore: initialize project structure`.
 - 2026-11-02: Verified the original Mendeley dataset record, inspected a temporary secondary CSV copy, and recorded its schema, quality findings, and scope limitations.
+- 2026-11-02: Trained and tested the initial local binary MLP using the provisional secondary copy. Saved artifacts locally under `models/provisional_mlp/`.
 
 ## Known issues
 
 - Original dataset-file retrieval and checksum verification remain unresolved because Mendeley's current public API required authentication.
-- No baseline dataset, trained model, metrics, API, UI, Supabase project, or test suite exists.
+- The local training file remains a secondary copy, not the verified original Mendeley file.
+- Test performance may be optimistic because the source has extensive duplicates and the secondary-file provenance is provisional.
+- No API, UI, Supabase project, or longitudinal forecasting dataset exists.
 - No remote repository is configured or has been contacted.
 
 ## Next step
 
-Await approval to begin Phase 2: acquire or explicitly accept a dataset file, implement leakage-safe preprocessing, and train an initial binary MLP baseline.
+Await approval to begin Phase 3: implement a minimal FastAPI inference API around the saved local artifacts.

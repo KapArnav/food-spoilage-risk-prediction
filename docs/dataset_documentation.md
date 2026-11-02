@@ -56,3 +56,7 @@ Neither the official six-field schema nor the inspected secondary copy contains 
 4. If the UI needs risk bands for review, define them as configurable **decision-policy bands** on the binary model score and label them accordingly.
 5. Deduplicate before splitting, then fit all preprocessing on training data only. Random splitting before deduplication would allow exact records to leak across partitions.
 6. Obtain a timestamped longitudinal dataset with an explicit future spoilage or quality endpoint before implementing a forecasting claim.
+
+## Phase 2 local usage
+
+The currently trained artifacts use the provisional secondary copy at the configurable local path `data/raw/fruit_spoilage_secondary.csv`. The file has SHA-256 `218F76F061A12B0A38C55107E5BE3B377E9EECB33F1A1840EF2B4E4618A5E5AA`; it remains ignored by Git and is not represented as the original Mendeley download.
