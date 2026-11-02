@@ -1,0 +1,39 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node and frontend builds
+node_modules/
+dist/
+coverage/
+.vite/
+
+# Model artifacts and local data
+data/raw/
+data/processed/
+models/*.keras
+models/*.h5
+models/*.joblib
+models/*.pkl
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Local build and temporary outputs
+.codex-finalizer/
+.tmp/
+tmp/

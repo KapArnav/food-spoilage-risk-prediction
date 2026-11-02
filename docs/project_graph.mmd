@@ -1,0 +1,19 @@
+flowchart TD
+    objectives[Research objectives] --> literature[Literature review]
+    literature --> gaps[Identified research gaps]
+    gaps --> dataset[Verified public dataset: pending]
+    dataset --> preprocessing[Leakage-safe preprocessing]
+    preprocessing --> features[Feature engineering]
+    features --> neural[Neural network]
+    neural --> training[Model training]
+    training --> evaluation[Evaluation]
+    neural --> probability[Model probability]
+    probability --> risk[Policy-derived risk classification]
+    risk --> decision[Decision support]
+    neural --> backend[FastAPI backend]
+    decision --> backend
+    backend --> frontend[React frontend]
+    backend --> supabase[Optional Supabase history]
+    backend --> testing[API and integration testing]
+    frontend --> testing
+    testing --> deployment[Local review demonstration]
